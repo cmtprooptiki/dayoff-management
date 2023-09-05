@@ -25,37 +25,61 @@ def format_year(year):
     return "{:d}".format(year)  
 def main():
     st.set_page_config(page_title="DayOff Management")
-    login()
+    conn = init_connection()
 
-def login():
-    # Create an empty container
-    placeholder = st.empty()
-
-    actual_email = "email"
-    actual_password = "password"
-
-    # Insert a form in the container
-    with placeholder.form("login"):
-        st.markdown("#### Enter your credentials")
-        email = st.text_input("Email")
-        password = st.text_input("Password", type="password")
-        submit = st.form_submit_button("Login")
-
-    if submit and email == actual_email and password == actual_password:
-        # If the form is submitted and the email and password are correct,
-        # clear the form/container and display a success message
-        placeholder.empty()
-        st.success("Login successful")
-        # Run the authenticated app as a separate process
-        mainpage()
-    elif submit and email != actual_email and password != actual_password:
-        st.error("Login failed")
+    session = session_state.get(login_state=False)
+    
+    if not session.login_state:
+        login(conn, session)
     else:
-        pass 
-def mainpage():
-    if st.button("Logout"):
-        raise SystemExit
+        mainpage(conn, session)
 
+# def login():
+#     # Create an empty container
+#     placeholder = st.empty()
+
+#     actual_email = "email"
+#     actual_password = "password"
+
+#     # Insert a form in the container
+#     with placeholder.form("login"):
+#         st.markdown("#### Enter your credentials")
+#         email = st.text_input("Email")
+#         password = st.text_input("Password", type="password")
+#         submit = st.form_submit_button("Login")
+
+#     if submit and email == actual_email and password == actual_password:
+#         # If the form is submitted and the email and password are correct,
+#         # clear the form/container and display a success message
+#         placeholder.empty()
+#         st.success("Login successful")
+#         # Run the authenticated app as a separate process
+#         mainpage()
+#     elif submit and email != actual_email and password != actual_password:
+#         st.error("Login failed")
+#     else:
+#         pass 
+def login(conn, session):
+    st.title("Day Off Management")
+    email = st.text_input("Email")
+    password = st.text_input("Password", type="password")
+    submit = st.form_submit_button("Login")
+
+    if submit:
+        actual_email = "email"
+        actual_password = "password"
+
+        if email == actual_email and password == actual_password:
+            session.login_state = True
+            st.success("Login successful")
+        else:
+            st.error("Login failed")
+def mainpage(conn, session):
+    # if st.button("Logout"):
+    #     raise SystemExit
+    if st.button("Logout"):
+        session.login_state = False
+        st.experimental_rerun()
 
     conn = init_connection()
     
