@@ -27,9 +27,9 @@ def main():
     st.set_page_config(page_title="DayOff Management")
     conn = init_connection()
 
-    session = session_state.get(login_state=False)
+    session = session_state.get(login_state=None)
     
-    if not session.login_state:
+    if session.login_state is None:
         login(conn, session)
     else:
         mainpage(conn, session)
