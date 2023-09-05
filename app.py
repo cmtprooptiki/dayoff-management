@@ -72,8 +72,7 @@ def login(conn):
 
         
 
-        # st.write(columnames)
-        dflogin=pd.DataFrame(rows,columns=columnames)
+        
         if submit:
             actual_email = "email"
             actual_password = "password"
@@ -87,6 +86,8 @@ def login(conn):
                  SELECT kimai2_users.username, kimai2_users.password FROM `kimai2_users` WHERE username={email};    
                 """
             rows,columnames = run_query(conn,sql)
+            # st.write(columnames)
+            dflogin=pd.DataFrame(rows,columns=columnames)
             if len(dflogin)>0:
                 st.session_state.login_state = True
                 st.success("Login successful")
