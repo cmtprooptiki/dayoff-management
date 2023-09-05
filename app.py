@@ -61,20 +61,22 @@ def main():
 #     else:
 #         pass 
 def login(conn):
-    st.title("Day Off Management")
-    email = st.text_input("Email")
-    password = st.text_input("Password", type="password")
-    submit = st.form_submit_button("Login")
+    with st.form("login"):
+        st.title("Day Off Management")
+        email = st.text_input("Email")
+        password = st.text_input("Password", type="password")
+        submit = st.form_submit_button("Login")
 
-    if submit:
-        actual_email = "email"
-        actual_password = "password"
+        if submit:
+            actual_email = "email"
+            actual_password = "password"
 
-        if email == actual_email and password == actual_password:
-            st.session_state.login_state = True
-            st.success("Login successful")
-        else:
-            st.error("Login failed")
+            if email == actual_email and password == actual_password:
+                st.session_state.login_state = True
+                st.success("Login successful")
+            else:
+                st.error("Login failed")
+
 def mainpage(conn):
     # if st.button("Logout"):
     #     raise SystemExit
