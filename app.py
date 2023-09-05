@@ -27,12 +27,13 @@ def main():
     st.set_page_config(page_title="DayOff Management")
     conn = init_connection()
 
-    session = session_state.get(login_state=None)
+    if 'login_state' not in st.session:
+        st.session.login_state = False
     
-    if session.login_state is None:
-        login(conn, session)
+    if not st.session.login_state:
+        login(conn)
     else:
-        mainpage(conn, session)
+        mainpage(conn)
 
 # def login():
 #     # Create an empty container
@@ -59,7 +60,7 @@ def main():
 #         st.error("Login failed")
 #     else:
 #         pass 
-def login(conn, session):
+def login(conn):
     st.title("Day Off Management")
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
@@ -70,15 +71,15 @@ def login(conn, session):
         actual_password = "password"
 
         if email == actual_email and password == actual_password:
-            session.login_state = True
+            st.session.login_state = True
             st.success("Login successful")
         else:
             st.error("Login failed")
-def mainpage(conn, session):
+def mainpage(conn):
     # if st.button("Logout"):
     #     raise SystemExit
     if st.button("Logout"):
-        session.login_state = False
+        st.session.login_state = False
         st.experimental_rerun()
 
     conn = init_connection()
