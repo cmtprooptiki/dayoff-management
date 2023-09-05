@@ -53,7 +53,8 @@ def login():
     else:
         pass 
 def mainpage():
-    
+    if st.button("Logout"):
+        raise SystemExit
 
 
     conn = init_connection()
@@ -344,13 +345,6 @@ def mainpage():
             conn.commit()
             st.success("Record Updated Successfully")
             st.experimental_rerun()
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
