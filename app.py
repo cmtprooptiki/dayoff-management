@@ -74,7 +74,6 @@ def login(conn):
             if email == actual_email and password == actual_password:
                 st.session_state.login_state = True
                 st.success("Login successful")
-                
             else:
                 st.error("Login failed")
 
@@ -85,7 +84,7 @@ def mainpage(conn):
         st.session_state.login_state = False
         st.experimental_rerun()
 
-    conn = init_connection()
+    #conn = init_connection()
     
 
     st.title("Day Off Management")
