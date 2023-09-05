@@ -1,5 +1,5 @@
 import streamlit as st
-
+import subprocess
 st.set_page_config(
     page_title="Home",
     page_icon="👋",
@@ -40,6 +40,8 @@ if submit and email == actual_email and password == actual_password:
     # clear the form/container and display a success message
     placeholder.empty()
     st.success("Login successful")
+    # Run the authenticated app as a separate process
+    subprocess.Popen(["streamlit", "run", "app2.py"])
 elif submit and email != actual_email and password != actual_password:
     st.error("Login failed")
 else:
