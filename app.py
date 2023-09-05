@@ -74,6 +74,7 @@ def login(conn):
             if email == actual_email and password == actual_password:
                 st.session_state.login_state = True
                 st.success("Login successful")
+                mainpage()
             else:
                 st.error("Login failed")
 
