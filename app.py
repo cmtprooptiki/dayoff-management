@@ -84,7 +84,7 @@ def login(conn):
             # else:
             #     st.error("Login failed")
             sql = f"""
-                 SELECT kimai2_users.username, kimai2_users.password FROM `kimai2_users` WHERE users2.username={email};    
+                 SELECT kimai2_users.username, kimai2_users.password FROM `kimai2_users` WHERE username={email};    
                 """
             rows,columnames = run_query(conn,sql)
             if len(dflogin)>0:
