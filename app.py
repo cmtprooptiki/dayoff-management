@@ -27,10 +27,10 @@ def main():
     st.set_page_config(page_title="DayOff Management")
     conn = init_connection()
 
-    if 'login_state' not in st.session:
-        st.session.login_state = False
+    if 'login_state' not in st.session_state:
+        st.session_state.login_state = False
     
-    if not st.session.login_state:
+    if not st.session_state.login_state:
         login(conn)
     else:
         mainpage(conn)
@@ -71,7 +71,7 @@ def login(conn):
         actual_password = "password"
 
         if email == actual_email and password == actual_password:
-            st.session.login_state = True
+            st.session_state.login_state = True
             st.success("Login successful")
         else:
             st.error("Login failed")
@@ -79,7 +79,7 @@ def mainpage(conn):
     # if st.button("Logout"):
     #     raise SystemExit
     if st.button("Logout"):
-        st.session.login_state = False
+        st.session_state.login_state = False
         st.experimental_rerun()
 
     conn = init_connection()
