@@ -71,7 +71,7 @@ def login(conn):
         submit = st.form_submit_button("Login")
 
         sql = f"""
-        SELECT kimai2_users.username, kimai2_users.email FROM `kimai2_users` WHERE email={email};    
+        SELECT kimai2_users.username, kimai2_users.password FROM `kimai2_users` WHERE username={email};    
         """
         rows,columnames = run_query(conn,sql)
 
