@@ -26,7 +26,7 @@ def format_year(year):
 def main():
     st.set_page_config(page_title="DayOff Management")
     conn = init_connection()
-    # var=""
+    var=""
     if 'login_state' not in st.session_state:
         st.session_state.login_state = False
     
@@ -34,7 +34,7 @@ def main():
         var=login(conn)
         if(var!=""):
             st.write(var)
-            #st.experimental_rerun()
+            st.experimental_rerun()
         
     else:
         mainpage(conn,var)
