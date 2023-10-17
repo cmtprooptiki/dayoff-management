@@ -161,7 +161,7 @@ def mainpage(conn):
         """, unsafe_allow_html=True)
 
     sql = f"""
-      SELECT kimai2_users.id, kimai2_users.alias as name FROM `kimai2_users`;
+      SELECT kimai2_users.id, kimai2_users.alias as name FROM `kimai2_users` WHERE kimai2_users.username = '{st.session_state.email}';
     """
     rows,columnames = run_query(conn,sql)
 
