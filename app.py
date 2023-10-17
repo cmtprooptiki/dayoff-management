@@ -31,13 +31,11 @@ def main():
         st.session_state.login_state = False
     
     if not st.session_state.login_state:
-        var=login(conn)
-        if(var!=""):
-            st.write(var)
-            st.experimental_rerun()
+        login(conn)
+            
         
     else:
-        mainpage(conn,var)
+        mainpage(conn)
 
 # def login():
 #     # Create an empty container
@@ -117,21 +115,22 @@ def login(conn):
             dflogin=pd.DataFrame(rows,columns=columnames)
             if len(dflogin)>0:
                 st.session_state.login_state = True
-                
+                st.session_state.email = email
+                st.experimental_rerun()
                 # st.success("Login successful")
                 # st.write(st.session_state.login_state)
-                return email
                 
             else:
                 st.error("Login failed")
         
 
 def mainpage(conn,var):
-    st.write("var")
+    st.write(st.session_state.email)
     # if st.button("Logout"):
     #     raise SystemExit
     if st.button("Logout"):
         st.session_state.login_state = False
+        st.session_state.email = ""
         st.experimental_rerun()
 
     #conn = init_connection()
