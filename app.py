@@ -33,7 +33,7 @@ def main():
     if not st.session_state.login_state:
         var=login(conn)
         st.write(var)
-        st.experimental_rerun()
+        
     else:
         mainpage(conn)
 
@@ -115,6 +115,7 @@ def login(conn):
             dflogin=pd.DataFrame(rows,columns=columnames)
             if len(dflogin)>0:
                 st.session_state.login_state = True
+                st.experimental_rerun()
                 # st.success("Login successful")
                 # st.write(st.session_state.login_state)
                 return 0
