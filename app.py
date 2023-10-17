@@ -91,8 +91,11 @@ def login(conn):
             if len(dflogin)>0:
                 st.session_state.login_state = True
                 st.success("Login successful")
+                return 0
+                
             else:
                 st.error("Login failed")
+        
 
 def mainpage(conn):
     # if st.button("Logout"):
