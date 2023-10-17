@@ -26,16 +26,16 @@ def format_year(year):
 def main():
     st.set_page_config(page_title="DayOff Management")
     conn = init_connection()
-
+    var=""
     if 'login_state' not in st.session_state:
         st.session_state.login_state = False
     
     if not st.session_state.login_state:
         var=login(conn)
-        st.write(var)
+        
         
     else:
-        mainpage(conn)
+        mainpage(conn,var)
 
 # def login():
 #     # Create an empty container
@@ -118,13 +118,14 @@ def login(conn):
                 st.experimental_rerun()
                 # st.success("Login successful")
                 # st.write(st.session_state.login_state)
-                return 0
+                return email
                 
             else:
                 st.error("Login failed")
         
 
-def mainpage(conn):
+def mainpage(conn,var):
+    st.write(var)
     # if st.button("Logout"):
     #     raise SystemExit
     if st.button("Logout"):
