@@ -33,7 +33,8 @@ def main():
     if not st.session_state.login_state:
         var=login(conn)
         if(var!=""):
-            st.experimental_rerun()
+            st.write(var)
+            # st.experimental_rerun()
         
     else:
         mainpage(conn,var)
