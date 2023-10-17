@@ -92,6 +92,7 @@ def login(conn):
                 st.session_state.login_state = True
                 # st.success("Login successful")
                 # st.write(st.session_state.login_state)
+                return 0
                 
             else:
                 st.error("Login failed")
