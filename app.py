@@ -124,7 +124,7 @@ def login(conn):
                 st.error("Login failed")
         
 
-def mainpage(conn,var):
+def mainpage(conn):
     st.write(st.session_state.email)
     # if st.button("Logout"):
     #     raise SystemExit
