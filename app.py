@@ -24,7 +24,7 @@ def run_query(conn,query):
 def format_year(year):
     return "{:d}".format(year)  
 def main():
-    st.set_page_config(page_title="DayOff Management")
+    st.set_page_config(page_title="DayOff Management",layout="wide")
     conn = init_connection()
     var=""
     if 'login_state' not in st.session_state:
