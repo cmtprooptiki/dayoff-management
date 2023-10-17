@@ -33,6 +33,7 @@ def main():
     if not st.session_state.login_state:
         var=login(conn)
         st.write(var)
+        main()
     else:
         mainpage(conn)
 
