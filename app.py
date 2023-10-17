@@ -37,7 +37,7 @@ def main():
             st.experimental_rerun()
         
     else:
-        mainpage(conn,var)
+        mainpage(conn,login(conn))
 
 # def login():
 #     # Create an empty container
