@@ -92,7 +92,7 @@ def login(conn):
         st.title("Day Off Management")
         email = st.text_input("Email")
         #password = st.text_input("Password", type="password")
-        submit = st.form_submit_button("Login",on_click=submit)
+        submit = st.form_submit_button("Login")
         
         
 
