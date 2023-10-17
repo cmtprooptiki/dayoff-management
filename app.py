@@ -61,7 +61,7 @@ def main():
 #         st.error("Login failed")
 #     else:
 #         pass 
-def submited():
+def submited(conn,email):
     actual_email = "email"
     actual_password = "password"
 
@@ -92,7 +92,7 @@ def login(conn):
         st.title("Day Off Management")
         email = st.text_input("Email")
         #password = st.text_input("Password", type="password")
-        submit = st.form_submit_button("Login",on_click=submited)
+        submit = st.form_submit_button("Login",on_click=submited(conn,email))
         
         
 
