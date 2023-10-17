@@ -34,7 +34,7 @@ def main():
         var=login(conn)
         if(var!=""):
             st.write(var)
-            # st.experimental_rerun()
+            #st.experimental_rerun()
         
     else:
         mainpage(conn,var)
@@ -127,7 +127,7 @@ def login(conn):
         
 
 def mainpage(conn,var):
-    st.write(var)
+    st.write("var")
     # if st.button("Logout"):
     #     raise SystemExit
     if st.button("Logout"):
